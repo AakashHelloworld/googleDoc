@@ -1,0 +1,28 @@
+.logo{
+    height: 3rem;
+}
+.logo img{
+    height: 100%;
+}
+.Navbar{
+    margin: 6px 16px 8px 16px;
+    display: flex;
+    gap: .5rem;
+}
+.tileContainer{
+    margin: 0;
+     padding: 0;
+     display: flex;
+     align-items: start;
+}
+
+.tileText{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: gray;
+}
+
+.linkContainer{
+    display: flex;
+    gap: 1rem;
+}
