@@ -14,6 +14,10 @@ import {CiTextAlignJustify} from "react-icons/ci"
 
 import ColorPicker from './ColorPicker';
 
+import HighLightPicker from './HighLightPicker';
+
+
+
 
 export default function Tools({ editor, MarkActive,isMarkActive,toggleMark,isBlockActive,toggleBlock ,LIST_TYPES, TEXT_ALIGN_TYPES}){
   const buttonEditor = useSlate()
@@ -150,6 +154,10 @@ clickHandler={blockclickhandler}
 
 <Button>
 <ColorPicker />
+</Button>
+
+<Button>
+  <HighLightPicker/>
 </Button>
 
     </div>
