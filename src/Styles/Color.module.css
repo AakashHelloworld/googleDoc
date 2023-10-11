@@ -1,0 +1,38 @@
+.colorPickerText{
+    font-family: 800;
+    font-size: 1.2rem;
+
+}
+
+.colorPickerBar{
+    background-color: red;
+    padding:1.3px 4px;
+}
+
+.colorPickerContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.ColorContainer{
+    min-width: 10rem;
+    min-height: 7rem;
+    max-width: 10rem;
+    max-height: 7rem;
+    position: absolute;
+    z-index: 9000;
+    display: flex;
+    gap: 1px;
+    flex-wrap: wrap;
+    top: 3rem;
+    padding: 1rem;
+    justify-content: space-around;
+    border: 1px solid rgb(153, 153, 153);
+    background-color: #fff;
+}
+
+.colorBox{
+    width: 1rem;
+    height: 1rem;
+}

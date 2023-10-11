@@ -15,6 +15,7 @@
     align-items: center;
     -webkit-font-smoothing: antialiased;
     gap: .3rem;
+    position: relative;
 }
 .editorTextContainer{
     display: flex;
@@ -46,6 +47,7 @@
     border: 1px solid rgb(153, 153, 153)!important;
     padding: 1rem;
     width: 60vw;
+    background-color: white;
     margin-top: 2rem;
     height: 100vh;
 

@@ -12,6 +12,9 @@ import style from "../../Styles/Editor.module.css"
 
 import {CiTextAlignJustify} from "react-icons/ci"
 
+import ColorPicker from './ColorPicker';
+
+
 export default function Tools({ editor, MarkActive,isMarkActive,toggleMark,isBlockActive,toggleBlock ,LIST_TYPES, TEXT_ALIGN_TYPES}){
   const buttonEditor = useSlate()
 
@@ -145,6 +148,9 @@ clickHandler={blockclickhandler}
   <BsImage className='active_icon'/>
 </Button>
 
+<Button>
+<ColorPicker />
+</Button>
 
     </div>
   )
