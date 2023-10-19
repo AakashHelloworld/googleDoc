@@ -1,16 +1,15 @@
 import './App.css';
-// import {Route, Routes} from "react-router-dom"
-// import Editor from "./Page/Editor"
-import Navbar from './Components/Editor/Navbar';
-import TextEditor from './Components/Editor/TextEditor/TextEditor';
+import {Route, Routes} from "react-router-dom"
+import Editor from "./Page/Editor"
+import HomePage from './Page/HomePage';
 function App() {
   return (
     <div className="App">
-    {/* <Routes>
+    <Routes>
+    <Route path='/' element={<HomePage />} />
     <Route path="/doc" element={<Editor />} />
-    </Routes> */}
-    <Navbar/>
-    <TextEditor/>
+    </Routes>
+
     </div>
   );
 }

@@ -1,0 +1,183 @@
+.LogoContainer{
+    height: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.LogoContainer img{
+    height: 100%;
+}
+
+.LogoContainer span{
+    font-size: 1.6rem;
+    color: gray;
+}
+.HomeNavbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.SearchContainer{
+    display: flex;
+    padding: .8rem;
+    gap: 1rem;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 40rem;
+    background-color: #f1f3f4;
+}
+.SearchContainer:active{
+   
+}
+.SearchContainer:focus{
+
+}
+
+
+.SearchContainer input{
+    width: 45rem;
+    padding: .3rem;
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+}
+.SearchContainer input:focus{
+    outline: none;
+
+}
+
+.SearchIcon{
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-left: 1rem;
+}
+
+.userConatiner{
+    height: 3rem;
+    display: flex;
+    width: 3rem;
+    gap: 1rem;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.userConatiner img{
+    height: 100%;
+
+}
+
+
+.CreateContainer{
+background-color:#f1f3f4;
+display: flex;
+justify-content: center;
+padding-bottom: 2rem;
+height: 300px;
+
+}
+.blank{
+height: 170px;
+width: 150px;
+cursor: pointer;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+border-radius: 4px;
+overflow: hidden;
+margin-bottom: 1rem;
+    }
+
+.blank img{
+    width: 100%;
+    height: 100%;
+}
+.SubContainer{
+ min-width: 80vw;
+}
+.CreateText span{
+    color: #202124;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 64px;
+}
+.blankContainer span{
+    margin-top: 2rem;
+    font-weight:500;
+}
+
+
+.AllDocContainer{
+    background-color:#fff;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+    height: 300px;
+    
+}
+
+.AllDocContainer span{
+    color: #202124;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 64px;
+}
+
+
+.DocSubContainer{
+    display: flex;
+    gap: 2rem;
+}
+
+.doc{
+    min-height: 280px;
+    min-width: 230px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.docFirst{
+    height: 70%;
+    width: 100%;
+
+
+}
+.docSecond{
+    height: 30%;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.24); 
+
+}
+.docSecond p{
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: .5rem;
+}
+
+.docDetail{
+    display: flex;
+    justify-content: space-between;
+}
+.docDetail div img{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.docDetail div{
+    display: flex;
+    align-items: center;
+    margin-left: .5rem;
+}
+
+.docDetail div span{
+    font-size: .9rem;
+    color: gray;
+}
+
+.iconcontainer{
+    margin-right: 1rem;
+}
+.icon{
+    cursor: pointer;
+}

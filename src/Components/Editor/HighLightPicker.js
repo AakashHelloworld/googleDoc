@@ -4,7 +4,14 @@ import {colors} from "../../Utils/Color"
 import {BiHighlight} from "react-icons/bi"
 const HighLightPicker = () => {
     const [OnPicker, setOnpicker] = useState(false)
+    const [selectColor, setSelectColor] = useState(colors[0])
     const colorPickerHandler =()=> setOnpicker(!OnPicker);
+    const colorSelectHandler = (e)=>{
+        console.log(e.target.id)
+        setSelectColor(e.target.id)
+        setOnpicker(false)
+        
+    }
     
   return (
     <div>
@@ -14,7 +21,7 @@ const HighLightPicker = () => {
                 {
                     colors.map((color, index)=>{
                         return (
-                        <div key={index} style={{backgroundColor: `${color}`}} className={style.colorBox}></div>)
+                        <div key={index} onClick={(e)=>colorSelectHandler(e)} style={{backgroundColor: `${color}`}} id={color} className={style.colorBox}></div>)
                     })
 
                 }
@@ -23,8 +30,8 @@ const HighLightPicker = () => {
 
     }
     <div className={style.colorPickerContainer} onClick={colorPickerHandler}>
-            <span className={style.colorPickerText}><BiHighlight/></span>
-            <span className={style.colorPickerBar}></span>
+            <span style={{color:`${selectColor}`}} className={style.colorPickerText}><BiHighlight/></span>
+            <span style={{backgroundColor:`${selectColor}`}}  className={style.colorPickerBar}></span>
         </div>
     </div>
     

@@ -153,11 +153,11 @@ clickHandler={blockclickhandler}
 </Button>
 
 <Button>
-<ColorPicker />
+<ColorPicker editor={editor} />
 </Button>
 
 <Button>
-  <HighLightPicker/>
+  <HighLightPicker editor={editor}/>
 </Button>
 
     </div>

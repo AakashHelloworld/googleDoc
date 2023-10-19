@@ -49,9 +49,7 @@
     width: 60vw;
     background-color: white;
     margin-top: 2rem;
-    height: 100vh;
-
-
+    min-height: 100vh;
 }
 
 .editorText:focus{
