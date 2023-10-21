@@ -11,20 +11,19 @@ const docschema = new mongoose.Schema({
     },
     Data:{
         type: String,
-        default: "[{type: 'paragraph',children: [{ text: '' }],},]"
+        default: '[{"type": "paragraph","children": [{"text": ""}]}]'
     },
     CreatedBy:{ 
-        type:String,
-        ref: 'User',
-        unique: true
+        type:String
     },
 
     InvitedTo:[{
         type:mongoose.Schema.ObjectId,
         ref: 'User'
-    }]
-    
+    }]  
 })
 
 const Doc = mongoose.model('Doc', docschema);
 module.exports = Doc; 
+
+ 

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Editor} from 'slate'
 import {useSlate } from 'slate-react'
-import Button from '../Form/Button';
+import Button from '../Form_Modal/Button';
 import {AiOutlineBold,AiOutlineItalic,AiOutlineUnderline} from "react-icons/ai"
 import {insertImage, isImageUrl} from "./TextEditor/index"
 import {BsTextCenter,BsTextRight, BsTextLeft,BsImage } from "react-icons/bs"

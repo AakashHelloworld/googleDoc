@@ -8,7 +8,7 @@ export default function DocCreate() {
 
   const DocCreateHandler = async()=>{
 
-    await axios.post('http://localhost:4000/api/docs/12374446238').then((result)=>{
+    await axios.post(`http://localhost:4000/api/docs/12374446238`).then((result)=>{
       if(result?.data?.Doc?._id){
         const Id  = result.data.Doc._id
         navigate(`/Doc/${Id}`);
@@ -20,7 +20,7 @@ export default function DocCreate() {
   
 
 
-
+ 
 
 
   return (

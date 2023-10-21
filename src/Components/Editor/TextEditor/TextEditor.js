@@ -15,7 +15,13 @@ export default function TextEditor({paramId, value}){
   const [editor] = useState(() => withReact(createEditor()))
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => { return <Leaf {...props} />}, [])
+
   const initialValue = JSON.parse(value.Data);
+
+
+
+
+
   const saveData = async() =>{
     const data = JSON.stringify(editor.children)
    await axios.post(`http://localhost:4000/api/docs/update/${paramId}`,{data: data}).then((result)=>{
@@ -26,11 +32,6 @@ export default function TextEditor({paramId, value}){
     clearTimeout(timer);
     timer = setTimeout(saveData, delay);
   }
-
-
-
-
-
   return (
     <div className={styles.editorContainer}>
       <Slate editor={editor} initialValue={initialValue} >

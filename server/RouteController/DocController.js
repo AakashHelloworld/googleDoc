@@ -16,26 +16,36 @@ exports.CreateDoc = async(req, res)=>{
       })
     }else{
         res.status(400).json({
-            status:"Failed!",
+            status:"Failed!", 
             message: "No userId provided"
           }) 
 
     }
 }
 
+exports.GetAllDoc = async(req, res)=>{
+    const UserId = req.params.UserId
+    const AllDoc = await Doc.find({CreatedBy:UserId })
+    res.status(201).json({
+        message: 'success',
+        Docs: AllDoc 
+    })
+} 
+ 
 
 exports.DeleteDoc = async(req, res) => { 
     const DocId = req.params.DocId;
+    const UserId = req.params.UserId;
     await Doc.findByIdAndDelete(DocId)
-    res.status(200).json({
-        status: "success", 
-        message:"Doc deleted!"
-      }) 
-    
+    const remainigDoc = await Doc.find({CreatedBy:UserId })
+    res.status(201).json({
+        message: 'success',
+        Docs: remainigDoc 
+    })   
 }
 
 
-exports.GetDoc = async(req, res)=>{
+exports.GetDoc = async(req, res)=>{ 
     const DocId = req.params.DocId;
     const SearchDoc = await Doc.findById(DocId)
     console.log(SearchDoc)
