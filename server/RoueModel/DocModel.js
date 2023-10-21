@@ -9,13 +9,16 @@ const docschema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    Body:{
-        type: String
+    Data:{
+        type: String,
+        default: "[{type: 'paragraph',children: [{ text: '' }],},]"
     },
-    CreatedBy:{
-        type:mongoose.Schema.ObjectId,
+    CreatedBy:{ 
+        type:String,
         ref: 'User',
+        unique: true
     },
+
     InvitedTo:[{
         type:mongoose.Schema.ObjectId,
         ref: 'User'

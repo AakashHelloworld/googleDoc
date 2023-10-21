@@ -1,0 +1,34 @@
+.homePage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #edf2fa;
+
+}
+
+
+.GoogleButton{
+    border: none;
+    background-color: white;
+    /* width: 13rem; */
+    /* height: 6rem; */
+    padding: 1rem 3rem;
+    cursor: pointer;
+}
+
+.GoogleButtonContainer{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.GoogleButtonContainer img{
+    width: 3rem;
+}
+
+.GoogleButtonContainer span{
+    font-size: 1.3rem;
+
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import style from "../../Styles/HomePage.module.css"
+import style from "../../Styles/Doc.module.css"
 import {BsSearch} from "react-icons/bs"
 export default function NavBar() {
   return (

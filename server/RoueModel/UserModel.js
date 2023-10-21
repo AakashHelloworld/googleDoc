@@ -9,7 +9,16 @@ const userschema = new mongoose.Schema({
         type: String,
         required: [true, 'User must have name'],
         unique: true,
+    },
+    GoogleId:{
+        type: String,
+        required: [true, 'User must have name'],
+        unique: true
+    },
+    Image:{
+        type: String,
     }
+
 })
 
 const User = mongoose.model('User', userschema);

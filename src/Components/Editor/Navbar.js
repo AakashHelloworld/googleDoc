@@ -1,6 +1,6 @@
 import React from 'react'
 import style from "../../Styles/Navbar.module.css"
-export default function Navbar() {
+export default function Navbar({Title}) {
   return (
     <div className={style.Navbar}>
       <div className={style.logo}>
@@ -8,7 +8,7 @@ export default function Navbar() {
       </div>
       <div>
         <div className={style.tileContainer}>
-            <span className={style.tileText}>Untitled document</span>
+            <span className={style.tileText}>{Title}</span>
         </div>
         <div className={style.linkContainer}>
             <span>File</span>

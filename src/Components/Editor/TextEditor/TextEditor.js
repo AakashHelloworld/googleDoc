@@ -1,18 +1,35 @@
-import React, {useState,useCallback} from 'react'
+import React, {useState,useCallback, useEffect} from 'react'
 import { createEditor, Editor } from 'slate'
 import { Slate, withReact, Editable } from 'slate-react'
 import Tools from '../Tools'
-import {initialValue, MarkActive, Leaf, isMarkActive,toggleMark, Element, toggleBlock,isBlockActive,LIST_TYPES, TEXT_ALIGN_TYPES} from "./index"
+import {MarkActive, Leaf, isMarkActive,toggleMark, Element, toggleBlock,isBlockActive,LIST_TYPES, TEXT_ALIGN_TYPES} from "./index"
 import styles from "../../../Styles/Editor.module.css"
+import axios from 'axios'
 
 
+  let timer = null;
+  let delay = 1000;
 
-export default function TextEditor(){
 
+export default function TextEditor({paramId, value}){
   const [editor] = useState(() => withReact(createEditor()))
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => { return <Leaf {...props} />}, [])
-  
+  const initialValue = JSON.parse(value.Data);
+  const saveData = async() =>{
+    const data = JSON.stringify(editor.children)
+   await axios.post(`http://localhost:4000/api/docs/update/${paramId}`,{data: data}).then((result)=>{
+    }).catch((err)=>{})}
+
+
+  const changeHandler = () =>{
+    clearTimeout(timer);
+    timer = setTimeout(saveData, delay);
+  }
+
+
+
+
 
   return (
     <div className={styles.editorContainer}>
@@ -23,11 +40,12 @@ export default function TextEditor(){
           className={styles.editorText}
           renderElement={renderElement}
           renderLeaf={renderLeaf}
-          spellCheck
+          spellCheck 
+          onKeyDown={changeHandler}
           autoFocus
          />
       </div>
-      </Slate>
+      </Slate> 
     </div>
   )
 }

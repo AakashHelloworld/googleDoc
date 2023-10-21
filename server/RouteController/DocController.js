@@ -1,12 +1,26 @@
 const Doc = require("../RoueModel/DocModel")
 
 exports.CreateDoc = async(req, res)=>{
-    const NewDoc = new Doc({...req.body})
+    console.log("Hello")
+    if(req.params.UserId){
+    const data = {
+        Title: 'Untitled Document',
+        CreatedBy: req.params.UserId
+    }
+    const NewDoc = new Doc({...data})
     await NewDoc.save();
-    res.status(200).json({
+    res.status(201).json({
         status:"success",
-        message: "sucessfully created!"
+        message: "sucessfully created!",
+        Doc: NewDoc
       })
+    }else{
+        res.status(400).json({
+            status:"Failed!",
+            message: "No userId provided"
+          }) 
+
+    }
 }
 
 
@@ -22,25 +36,28 @@ exports.DeleteDoc = async(req, res) => {
 
 
 exports.GetDoc = async(req, res)=>{
-    const UserId = req.params.UserId;
-    const SearchDoc = await Doc.findById(UserId)
-
+    const DocId = req.params.DocId;
+    const SearchDoc = await Doc.findById(DocId)
+    console.log(SearchDoc)
     res.status(200).json({
         status: "success",
         Docs: SearchDoc
       })
 }
 
-
+ 
 exports.EditDoc = async(req, res)=>{
-    const DocId = req.body;
-    const DocBody = req.body.Body;
-    const UpdateDoc = await Doc.findByIdAndUpdate(DocId, DocBody,{
-        new: true,
-        runValidators: true
-    })
+    const DocId = req.params.DocId;
+    const DocBody = req.body;
+    const Data = {
+        Data: DocBody.data
+    }
+    const UpdateDoc = await Doc.findByIdAndUpdate(DocId, Data)
+
+    console.log(UpdateDoc)
+
     res.status(200).json({
         status: 'success',
-        Docs: UpdateDoc
+        // Docs: UpdateDoc 
     })
 }

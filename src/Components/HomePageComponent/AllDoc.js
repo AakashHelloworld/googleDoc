@@ -1,5 +1,5 @@
 import React from 'react'
-import style from "../../Styles/HomePage.module.css"
+import style from "../../Styles/Doc.module.css"
 import {BiDotsVerticalRounded} from "react-icons/bi"
 export default function AllDoc() {
   return (
