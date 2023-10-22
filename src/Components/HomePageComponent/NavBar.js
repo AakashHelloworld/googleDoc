@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "../../Styles/Doc.module.css"
 import {BsSearch} from "react-icons/bs"
-export default function NavBar() {
+export default function NavBar({Image}) {
   return (
     <div className={style.HomeNavbar}>
   <div className={style.LogoContainer}>
@@ -13,7 +13,7 @@ export default function NavBar() {
   <input type="search" id="gsearch" name="gsearch" placeholder='Search'></input>
   </div>
   <div className={style.userConatiner}>
-      <img src='https://miro.medium.com/v2/resize:fit:1400/1*OsBnf8aCRMLwoXBm8xWTEw.png' />
+      <img src={Image}/>
   </div>    
     </div>
   )

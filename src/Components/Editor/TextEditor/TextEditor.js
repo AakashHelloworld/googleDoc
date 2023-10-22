@@ -15,16 +15,11 @@ export default function TextEditor({paramId, value}){
   const [editor] = useState(() => withReact(createEditor()))
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => { return <Leaf {...props} />}, [])
-
   const initialValue = JSON.parse(value.Data);
-
-
-
-
-
   const saveData = async() =>{
     const data = JSON.stringify(editor.children)
-   await axios.post(`http://localhost:4000/api/docs/update/${paramId}`,{data: data}).then((result)=>{
+    
+   await axios.post(`/api/docs/update/${paramId}`,{data: data}).then((result)=>{
     }).catch((err)=>{})}
 
 

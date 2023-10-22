@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Editor} from 'slate'
 import {useSlate } from 'slate-react'
 import Button from '../Form_Modal/Button';
@@ -9,20 +9,22 @@ import {VscListOrdered, VscListUnordered} from "react-icons/vsc"
 import {LuHeading1, LuHeading2} from "react-icons/lu"
 
 import style from "../../Styles/Editor.module.css"
+import {AiOutlinePlus, AiOutlineEnter} from "react-icons/ai"
 
 import {CiTextAlignJustify} from "react-icons/ci"
 
 import ColorPicker from './ColorPicker';
 
 import HighLightPicker from './HighLightPicker';
-
-
+import Modal from "../Form_Modal/Modal"
+import axios from "axios"
 
 
 export default function Tools({ editor, MarkActive,isMarkActive,toggleMark,isBlockActive,toggleBlock ,LIST_TYPES, TEXT_ALIGN_TYPES}){
   const buttonEditor = useSlate()
-
-  
+  const [invitePopup, setInvitePopup] = useState(false)
+  const [emails, setEmails] = useState([])
+  const [emailText, setEmailText] =useState("");
   const blockclickhandler = (e) =>{
       e.preventDefault();
       toggleBlock(buttonEditor, `${e.currentTarget.value}`)
@@ -42,11 +44,32 @@ export default function Tools({ editor, MarkActive,isMarkActive,toggleMark,isBlo
     //   return
     // }
      insertImage(editor, url)
+  }
 
+  const invitePopUpHandler = () =>{
+    setInvitePopup(!invitePopup);
+  }
+
+  const emailHandler = (e)=>{
+    setEmailText(e.target.value)
+  }
+
+  const submitHandler = (e)=>{
+    e.preventDefault();
+    console.log(emailText)
+    console.log(emails)
+    setEmails((emails)=>{
+      return [...emails, emailText  ]
+    })
+  }
+
+  const submitAllEmails = (e)=>{
+      
   }
   
   return (
     <div className={style.toolContainer}>
+    <div className={style.toolSubContainer}>
     <Button
      active={isMarkActive(buttonEditor, "bold" )}
      value={"bold"} clickHandler={clickHandler}>
@@ -159,7 +182,36 @@ clickHandler={blockclickhandler}
 <Button>
   <HighLightPicker editor={editor}/>
 </Button>
+</div>
+<div className={style.InviteContainer}>
+<button onClick={invitePopUpHandler}>
+< AiOutlinePlus className={style.InviteIcon} />
+<span>Invite</span>
+</button>
+      <Modal isOpen={invitePopup}>
+            <div className={style.InviteModalContainer}>
+              <div className={style.InviteModalSubContainer}>
+                <input value={emailText} type='text' onChange={emailHandler}  />
+                <button onClick={(e)=>submitHandler(e)} ><AiOutlineEnter className={style.InviteButtonIcon} /></button>
+              </div>
+              <div className={style.emailCOntainer}>
+{
 
+        emails?.map((data)=>{
+          return (<div className={style.email}><p >{data}</p></div>)
+        })
+
+}
+              </div>
+              <div>
+                <button onClick={()=>setInvitePopup(false)}>Cancel</button>
+                <button onClick={submitAllEmails}>Submit</button>
+
+              </div>
+            </div>
+        
+      </Modal>
+</div>
     </div>
   )
 }

@@ -3,12 +3,12 @@ import style from "../../Styles/Doc.module.css"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 
-export default function DocCreate() {
+export default function DocCreate({userId}) {
   const navigate = useNavigate();
 
   const DocCreateHandler = async()=>{
 
-    await axios.post(`http://localhost:4000/api/docs/12374446238`).then((result)=>{
+    await axios.post(`/api/docs/${userId}`).then((result)=>{
       if(result?.data?.Doc?._id){
         const Id  = result.data.Doc._id
         navigate(`/Doc/${Id}`);

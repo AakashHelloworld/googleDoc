@@ -15,7 +15,7 @@ const userschema = new mongoose.Schema({
         required: [true, 'User must have name'],
         unique: true
     },
-    Image:{
+    Image:{ 
         type: String,
     }
 

@@ -1,16 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
-// const passport = require('passport')
+const passport = require('passport')
 const app = express(); 
-// const passportSetup = require("./passportSetup")
+const passportSetup = require("./passportSetup")
 const cors = require("cors");
 const cookieParser = require("cookie-parser") 
 const Doc = require("./Route/DocRoute") 
 const Auth = require("./Route/AuthRouter")
 const cookieSession = require('cookie-session')
-const session = require('express-session');
-
 
 dotenv.config({path: './config.env'});
 
@@ -28,18 +26,20 @@ app.use(express.json());
 
 app.use(cookieSession({
     name: 'session',
-    keys:['hello'], 
+    keys:['helloWorld123'], 
     maxAge: 25*60*60*100
 }
 ))
+
+app.use(passport.initialize());
+app.use(passport.session()) 
 
 app.use(cors({
     credentials: true, 
     origin: ["http://localhost:3000"]
 }));
 
-// app.use(passport.initialize());
-// app.use(passport.session()) 
+
 
 app.use(cookieParser());
 

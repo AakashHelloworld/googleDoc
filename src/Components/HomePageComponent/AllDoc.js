@@ -11,12 +11,11 @@ const Blank =({data,DeleteDoc})=>{
   const [popupStatus, SetpopupStatus] = useState(false);
 
   const popupHandler = () =>{
-
     SetpopupStatus(!popupStatus)
   }
 
   const deleteHandler = ()=>{
-    DeleteDoc(data._id, data.CreatedBy)
+    DeleteDoc(data._id)
     SetpopupStatus(!popupStatus)
   }
 
@@ -65,14 +64,14 @@ className={style.iconcontainer} onClick={popupHandler}>
 
 
 
-export default function AllDoc() {
+export default function AllDoc({userId}) {
     const [AllDoc, setAllDoc] = useState([]);
   useEffect(()=>{
     fetchDoc()
   },[])
 
-    const DeleteDoc = (DocId, UserId)=>{
-      axios.delete(`http://localhost:4000/api/docs/delete/${DocId}/${UserId}`).then((result)=>{
+    const DeleteDoc = (DocId)=>{
+      axios.delete(`http://localhost:4000/api/docs/delete/${DocId}/${userId}`).then((result)=>{
 
         if(result?.data?.Docs?.length)
         {
@@ -95,7 +94,7 @@ export default function AllDoc() {
     }
 
     const fetchDoc = async()=>{
-        await axios.get('http://localhost:4000/api/docs/all/12374446238').then((result)=>{
+        await axios.get(`http://localhost:4000/api/docs/all/${userId}`).then((result)=>{
 
             if(result?.data?.Docs?.length)
             {
@@ -127,7 +126,7 @@ export default function AllDoc() {
 
     {  !!AllDoc?.length&& AllDoc.map((data)=>{
       return(  
-        <Blank data={data} DeleteDoc={DeleteDoc} />
+        <Blank key={data._id} data={data} DeleteDoc={DeleteDoc} />
         )
         } )
     }

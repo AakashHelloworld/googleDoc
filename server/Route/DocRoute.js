@@ -12,4 +12,6 @@ router.route("/delete/:DocId/:UserId").delete(DocController.DeleteDoc)
 
 router.route("/update/:DocId").post(DocController.EditDoc)
  
+
+
 module.exports = router;    

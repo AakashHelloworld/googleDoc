@@ -9,7 +9,7 @@ export default function Editor() {
   const { id } = useParams();
   const [docData, setDocData] = useState({});
   const fetchDoc = async()=>{
-    await axios.get(`http://localhost:4000/api/docs/${id}`).then((result)=>{
+    await axios.get(`/api/docs/${id}`).then((result)=>{
     if(result?.data?.Docs?._id){
     const data = result.data.Docs
     console.log(data)
@@ -33,7 +33,7 @@ export default function Editor() {
     <div>
     { docData.Data ?
       <>
-        <Navbar Title={docData.Title}/>
+        <Navbar Title={docData.Title}/> 
         <TextEditor value={docData} paramId={id}/>
       </> :
       <h1>
