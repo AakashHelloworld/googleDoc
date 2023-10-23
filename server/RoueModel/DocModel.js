@@ -19,7 +19,6 @@ const docschema = new mongoose.Schema({
  
     InvitedTo:[{
         type:String,
-        ref: 'User'
     }]  
 })
 

@@ -6,6 +6,9 @@ router.route("/:DocId").get(DocController.GetDoc)
  
 router.route("/:UserId").post(DocController.CreateDoc)
 
+router.route("/shared/:UserId").get(DocController.SharedDoc)
+
+
 router.route("/All/:UserId").get(DocController.GetAllDoc)
 
 router.route("/delete/:DocId/:UserId").delete(DocController.DeleteDoc)

@@ -1,6 +1,6 @@
 const Doc = require("../RoueModel/DocModel")
 const sendEmail = require("../utils/email")
-
+const User = require("../RoueModel/UserModel")
 exports.CreateDoc = async(req, res)=>{
     console.log("Hello")
     if(req.params.UserId){
@@ -26,7 +26,7 @@ exports.CreateDoc = async(req, res)=>{
 
 exports.GetAllDoc = async(req, res)=>{
     const UserId = req.params.UserId
-    const AllDoc = await Doc.find({CreatedBy:UserId })
+    const AllDoc = await Doc.find({CreatedBy:UserId }).sort({ CreatedAt: -1 });
     res.status(201).json({
         message: 'success',
         Docs: AllDoc 
@@ -38,7 +38,7 @@ exports.DeleteDoc = async(req, res) => {
     const DocId = req.params.DocId;
     const UserId = req.params.UserId;
     await Doc.findByIdAndDelete(DocId)
-    const remainigDoc = await Doc.find({CreatedBy:UserId })
+    const remainigDoc = await Doc.find({CreatedBy:UserId }).sort({ CreatedAt: -1 });
     res.status(201).json({
         message: 'success',
         Docs: remainigDoc 
@@ -91,4 +91,25 @@ exports.InviteFriends = async(req, res)=>{
         status: 'success',  
         // Docs: UpdateDoc 
     })
+}
+
+exports.SharedDoc = async(req, res)=>{
+
+    const userId = req.params.UserId
+    const user = await User.findById(userId);
+    if(user.Email){
+        const email = user.Email
+        let AllDoc = await Doc.find({ InvitedTo: email }).sort({ CreatedAt: -1 });;
+        console.log(AllDoc)
+        res.status(200).json({
+            message:"success",
+            Docs:AllDoc 
+        })
+
+    }else{
+        res.status(200).json({
+            message: "There is no user of that Id",
+
+        })
+    }
 }

@@ -14,7 +14,7 @@ function App() {
     <Route path='/home' element={<Doc />} />
     </Route>
     <Route element={<ProjectRoute/>}>
-    <Route path="/doc/:id" element={<Editor />} />
+    <Route path="/doc/:id/:shared" element={<Editor />} />
     </Route>
     </Routes>
     </div>
