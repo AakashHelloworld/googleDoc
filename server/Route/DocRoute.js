@@ -12,6 +12,7 @@ router.route("/delete/:DocId/:UserId").delete(DocController.DeleteDoc)
 
 router.route("/update/:DocId").post(DocController.EditDoc)
  
+router.route("/invite/:DocId").post(DocController.InviteFriends)
 
 
 module.exports = router;    

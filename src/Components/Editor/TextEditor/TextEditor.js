@@ -30,7 +30,7 @@ export default function TextEditor({paramId, value}){
   return (
     <div className={styles.editorContainer}>
       <Slate editor={editor} initialValue={initialValue} >
-      <Tools Editor={Editor} editor={editor} MarkActive={MarkActive} isMarkActive={isMarkActive} toggleMark={toggleMark} isBlockActive={isBlockActive} toggleBlock={toggleBlock} TEXT_ALIGN_TYPES={TEXT_ALIGN_TYPES} LIST_TYPES={LIST_TYPES} />
+      <Tools paramId={paramId} Editor={Editor} editor={editor} MarkActive={MarkActive} isMarkActive={isMarkActive} toggleMark={toggleMark} isBlockActive={isBlockActive} toggleBlock={toggleBlock} TEXT_ALIGN_TYPES={TEXT_ALIGN_TYPES} LIST_TYPES={LIST_TYPES} />
       <div className={styles.editorTextContainer}>
       <Editable
           className={styles.editorText}

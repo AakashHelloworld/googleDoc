@@ -6,6 +6,10 @@ const initialState = {
     Image: "",
     Username: "",
     _id: "",
+    InviteId:{
+      DocId: "",
+      status: false
+    }
   };
   const AppContext = React.createContext();
 

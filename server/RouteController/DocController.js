@@ -1,4 +1,5 @@
 const Doc = require("../RoueModel/DocModel")
+const sendEmail = require("../utils/email")
 
 exports.CreateDoc = async(req, res)=>{
     console.log("Hello")
@@ -63,12 +64,31 @@ exports.EditDoc = async(req, res)=>{
         Data: DocBody.data
     }
     const UpdateDoc = await Doc.findByIdAndUpdate(DocId, Data)
-
     console.log(UpdateDoc)
-
     res.status(200).json({
         status: 'success',
         // Docs: UpdateDoc 
     })
 }
 
+
+exports.InviteFriends = async(req, res)=>{
+    const DocId = req.params.DocId;
+    const Arr = req.body;
+    console.log(Arr)
+    const UpdateDoc = await Doc.findByIdAndUpdate(DocId, {$push: {InvitedTo:Arr}})
+    console.log(UpdateDoc)
+    // if(Arr.length){
+    //     Arr.forEach( async(element) => {
+    //         await sendEmail({ 
+    //             Email: element,
+    //             subject: 'Join Google doc Clone', 
+    //             html: `<a href='http://localhost:3000/api/doc/${DocId}'>Invite to goolge Doc</a>`
+    //         }); 
+    //     });
+    // }
+    res.status(200).json({
+        status: 'success',  
+        // Docs: UpdateDoc 
+    })
+}

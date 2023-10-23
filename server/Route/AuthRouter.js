@@ -21,7 +21,7 @@ router.route('/login/success').get((req,res)=>{
         user: req.user
     })
 }else{ 
-    res.status(200).json({
+    res.status(400).json({ 
         message: 'failure'
     })
     } 

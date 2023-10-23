@@ -20,7 +20,7 @@ import Modal from "../Form_Modal/Modal"
 import axios from "axios"
 
 
-export default function Tools({ editor, MarkActive,isMarkActive,toggleMark,isBlockActive,toggleBlock ,LIST_TYPES, TEXT_ALIGN_TYPES}){
+export default function Tools({ editor, paramId, MarkActive,isMarkActive,toggleMark,isBlockActive,toggleBlock ,LIST_TYPES, TEXT_ALIGN_TYPES}){
   const buttonEditor = useSlate()
   const [invitePopup, setInvitePopup] = useState(false)
   const [emails, setEmails] = useState([])
@@ -64,7 +64,14 @@ export default function Tools({ editor, MarkActive,isMarkActive,toggleMark,isBlo
   }
 
   const submitAllEmails = (e)=>{
-      
+    if(emails.length){
+    axios.post(`/api/docs/invite/${paramId}`, emails).then((result)=>{
+        console.log(result)
+    }).catch((err)=>{
+      console.log(err)
+    })
+    }else{
+    }
   }
   
   return (

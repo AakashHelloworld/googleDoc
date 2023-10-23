@@ -14,11 +14,11 @@ const docschema = new mongoose.Schema({
         default: '[{"type": "paragraph","children": [{"text": ""}]}]'
     },
     CreatedBy:{ 
-        type:String
+        type:String 
     },
-
+ 
     InvitedTo:[{
-        type:mongoose.Schema.ObjectId,
+        type:String,
         ref: 'User'
     }]  
 })

@@ -12,7 +12,7 @@ passport.serializeUser((user, done)=>{
 
 passport.deserializeUser((id, done)=>{
   User.findOne({GoogleId:id}).then((user)=>{
-    console.log(user, "deseria")
+    // console.log(user, "deseria")
     done(null, user)
   }) 
 })
@@ -31,14 +31,14 @@ passport.use(new GoogleStrategy({
         Image: profile.photos[0].value,
         Email: profile.emails[0].value
       }
-      console.log(user) 
+      // console.log(user) 
       User.findOne({GoogleId: `${profile.id}` }).then((currentUser)=>{
         if(currentUser){
-          console.log("User is:",currentUser )
+          // console.log("User is:",currentUser )
           done(null, currentUser)
         }else{
           new User({...user}).save().then((newUser)=>{
-            console.log("User is:",newUser )
+            // console.log("User is:",newUser )
             done(null, newUser)
   
           })

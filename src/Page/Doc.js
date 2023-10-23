@@ -27,9 +27,9 @@ export default function HomePage(){
       console.log(err);
     }
   }
-  useEffect(() => { 
-    getUserData();
-  }, []);
+  // useEffect(() => { 
+  //   getUserData();
+  // }, []);
 
 
   return ( 
