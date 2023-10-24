@@ -20,7 +20,7 @@ import Modal from "../Form_Modal/Modal"
 import axios from "axios"
 
 
-export default function Tools({ editor, paramId, MarkActive,isMarkActive,toggleMark,isBlockActive,toggleBlock ,LIST_TYPES, TEXT_ALIGN_TYPES}){
+export default function Tools({changeHandler, editor, paramId, MarkActive,isMarkActive,toggleMark,isBlockActive,toggleBlock ,LIST_TYPES, TEXT_ALIGN_TYPES}){
   const buttonEditor = useSlate()
   const [invitePopup, setInvitePopup] = useState(false)
   const [emails, setEmails] = useState([])
@@ -28,10 +28,12 @@ export default function Tools({ editor, paramId, MarkActive,isMarkActive,toggleM
   const blockclickhandler = (e) =>{
       e.preventDefault();
       toggleBlock(buttonEditor, `${e.currentTarget.value}`)
+      changeHandler()
   }
   const clickHandler = (e) => {
     e.preventDefault();
     toggleMark(buttonEditor,`${e.currentTarget.value}`)
+    changeHandler()
   };
 
   const imageclickhandler = (e)=>{
@@ -44,6 +46,7 @@ export default function Tools({ editor, paramId, MarkActive,isMarkActive,toggleM
     //   return
     // }
      insertImage(editor, url)
+     changeHandler()
   }
 
   const invitePopUpHandler = () =>{

@@ -2,7 +2,7 @@ const Doc = require("../RoueModel/DocModel")
 const sendEmail = require("../utils/email")
 const User = require("../RoueModel/UserModel")
 exports.CreateDoc = async(req, res)=>{
-    console.log("Hello")
+    // console.log("Hello")
     if(req.params.UserId){
     const data = {
         Title: 'Untitled Document',
@@ -49,7 +49,7 @@ exports.DeleteDoc = async(req, res) => {
 exports.GetDoc = async(req, res)=>{ 
     const DocId = req.params.DocId;
     const SearchDoc = await Doc.findById(DocId)
-    console.log(SearchDoc)
+    // console.log(SearchDoc)
     res.status(200).json({
         status: "success",
         Docs: SearchDoc
@@ -64,7 +64,7 @@ exports.EditDoc = async(req, res)=>{
         Data: DocBody.data
     }
     const UpdateDoc = await Doc.findByIdAndUpdate(DocId, Data)
-    console.log(UpdateDoc)
+    // console.log(UpdateDoc)
     res.status(200).json({
         status: 'success',
         // Docs: UpdateDoc 
@@ -75,18 +75,18 @@ exports.EditDoc = async(req, res)=>{
 exports.InviteFriends = async(req, res)=>{
     const DocId = req.params.DocId;
     const Arr = req.body;
-    console.log(Arr)
+    // console.log(Arr)
     const UpdateDoc = await Doc.findByIdAndUpdate(DocId, {$push: {InvitedTo:Arr}})
-    console.log(UpdateDoc)
-    // if(Arr.length){
-    //     Arr.forEach( async(element) => {
-    //         await sendEmail({ 
-    //             Email: element,
-    //             subject: 'Join Google doc Clone', 
-    //             html: `<a href='http://localhost:3000/api/doc/${DocId}'>Invite to goolge Doc</a>`
-    //         }); 
-    //     });
-    // }
+    // console.log(UpdateDoc)
+    if(Arr.length){
+        Arr.forEach( async(element) => {
+            await sendEmail({ 
+                Email: element,
+                subject: 'Join Google doc Clone', 
+                html: `<a href='http://localhost:3000/doc/${DocId}/true'>Invite to goolge Doc</a>`
+            }); 
+        });
+    }
     res.status(200).json({
         status: 'success',  
         // Docs: UpdateDoc 
@@ -100,7 +100,7 @@ exports.SharedDoc = async(req, res)=>{
     if(user.Email){
         const email = user.Email
         let AllDoc = await Doc.find({ InvitedTo: email }).sort({ CreatedAt: -1 });;
-        console.log(AllDoc)
+        // console.log(AllDoc)
         res.status(200).json({
             message:"success",
             Docs:AllDoc 

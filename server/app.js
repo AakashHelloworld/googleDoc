@@ -10,7 +10,7 @@ const Doc = require("./Route/DocRoute")
 const Auth = require("./Route/AuthRouter")
 const cookieSession = require('cookie-session')
 
-dotenv.config({path: './config.env'});
+dotenv.config({path: './config.env'}); 
 
 const DB = process.env.DATABASE; 
 console.log(DB)
