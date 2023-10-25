@@ -135,3 +135,19 @@
   padding: 2px 3px;
   margin: 2px;
 }
+.userIconConatiner{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.userIcon{
+  color: purple;
+}
+
+.userIconConatiner span{
+  color: whITE;
+  padding: .2rem;
+  background-color: purple;
+  font-size: .5rem;
+
+}

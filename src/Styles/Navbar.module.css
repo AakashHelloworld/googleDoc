@@ -20,9 +20,61 @@
     font-size: 1.2rem;
     font-weight: 600;
     color: gray;
+    cursor: pointer;
 }
 
 .linkContainer{
     display: flex;
     gap: 1rem;
+}
+
+.TitlepopUpMainContainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.112);
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11111111;
+}
+
+.TitlepopUpContainer{
+    width: 30vw;
+    height: 30vh;
+    background: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 2rem;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.TitlepopUpContainer input{
+    width: 80%;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border: none;
+    border-bottom: 1px solid blue;
+
+}
+
+.TitlepopUpContainer input:focus{
+outline: none;
+}
+
+.TitlepopUpContainer button{
+    margin-top: 1rem;
+    padding: .5rem;
+    width: 80%;
+    background-color: #0077dd;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+
+
 }

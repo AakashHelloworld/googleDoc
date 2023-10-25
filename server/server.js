@@ -31,16 +31,16 @@ const io = require("socket.io")(server, {
 
   io.on("connection", (socket) => {
   console.log("Connected to socket.io");
-    console.log(socket.id)
+    // console.log(socket.id)
     socket.on("get-document", (paramId)=>{
-        console.log( "DocId ::::::", paramId)
-        socket.join(paramId)  
-        socket.on("send-changes", data => {
-                console.log(data)
-            socket.broadcast.to(paramId).emit("receive-changes", data)
-          })
+        // console.log( "DocId ::::::", paramId)
+        // socket.join(paramId)
+        socket.on("User", (user_position)=>{
+            // console.log("I am active")
+            // console.log(user_position);
+            socket.to(paramId).emit('send-user-position', user_position)
+            }) 
+    } 
+    )
 
-        
-    })
-
-    });       
+    });        

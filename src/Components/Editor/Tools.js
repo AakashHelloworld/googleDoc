@@ -64,16 +64,18 @@ export default function Tools({changeHandler, editor, paramId, MarkActive,isMark
     setEmails((emails)=>{
       return [...emails, emailText  ]
     })
+    setEmailText("")
   }
 
   const submitAllEmails = (e)=>{
     if(emails.length){
     axios.post(`/api/docs/invite/${paramId}`, emails).then((result)=>{
         console.log(result)
+        setInvitePopup(false);
+        setEmails([])
     }).catch((err)=>{
       console.log(err)
     })
-    }else{
     }
   }
   

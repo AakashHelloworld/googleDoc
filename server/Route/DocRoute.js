@@ -15,6 +15,10 @@ router.route("/delete/:DocId/:UserId").delete(DocController.DeleteDoc)
 
 router.route("/update/:DocId").post(DocController.EditDoc)
  
+router.route("/update/:DocId/title").post(DocController.TitleEdit)
+ 
+
+
 router.route("/invite/:DocId").post(DocController.InviteFriends)
 
 

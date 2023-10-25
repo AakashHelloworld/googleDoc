@@ -113,3 +113,15 @@ exports.SharedDoc = async(req, res)=>{
         })
     }
 }
+
+
+exports.TitleEdit = async(req, res)=>{
+    const DocId =  req.params.DocId;
+    const { Title } = req.body; // Destructure Title from req.body
+    console.log(Title, "Hello")
+    const UpdateDoc = await Doc.findByIdAndUpdate(DocId, {Title: Title},{ new: true })
+    res.status(200).json({ 
+        message: "success",
+        Doc: UpdateDoc 
+    })
+}

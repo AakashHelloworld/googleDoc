@@ -5,19 +5,27 @@ import Tools from '../Tools'
 import {MarkActive, Leaf, isMarkActive,toggleMark, Element, toggleBlock,isBlockActive,LIST_TYPES, TEXT_ALIGN_TYPES} from "./index"
 import styles from "../../../Styles/Editor.module.css"
 import axios from 'axios'
+import { useGlobalContext } from '../../../Context/context'
 import { io } from "socket.io-client"
-
+import {LiaMousePointerSolid} from "react-icons/lia"
   let timer = null;
   let delay = 1000;
 
 export default function TextEditor({ value, paramId}){
+  const  {state} = useGlobalContext();
   const [socket, setSocket] = useState()
-  const [editor, setEditor] = useState(() => withReact(createEditor()))
+  const [editor] = useState(() => withReact(createEditor()))
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => { return <Leaf {...props} />}, [])
   const initialValue = JSON.parse(value.Data);
   const [slateValue, setSlateValue]= useState(initialValue);
-
+  const [mousePositionUser, SetmousePositionUser] = useState({
+    username:"" ,
+    mousePosition: {
+      x: 0,
+      y: 0
+    }
+  })
   useEffect(() => {
     const s = io("http://localhost:4000")
     setSocket(s)
@@ -28,40 +36,46 @@ export default function TextEditor({ value, paramId}){
 
 
 
+  
+
+
   useEffect(()=>{
     if(socket == null || paramId==null){
         return
     }else{
       console.log(socket, "Hello socket")
       socket.emit("get-document", paramId)
+
+      window.addEventListener('mousemove', (e)=>{
+        // console.log(e.clientX, e.clientY, "hello")
+        const user ={
+          username: state.Username,
+          mousePosition: {
+            x: e.clientX,
+            y: e.clientY
+          }
+        }
+        socket.emit("User", user)
+      })
     }
+
   }, [paramId, socket])
 
+    useEffect(()=>{
+      if(socket==null) return
 
-  useEffect(() => {
-    if (socket == null || paramId == null) {
-      return;
-    } else {
-      socket.on("receive-changes", (newState) => {
-        // Delete all nodes
-  
-        // Insert new nodes
-        Transforms.insertNodes(editor, newState.children, { at: Editor.start(editor, []) });
-  
-        // Update selection
-          Transforms.select(editor, newState.selection);
-      });
-    }
-  }, [socket, editor]);
-  
+      socket.on('send-user-position', (user_position)=>{
+        console.log(user_position)
+        SetmousePositionUser(user_position)
+      })
 
 
 
+    }, [socket])
 
   const saveData = async() =>{
     const data = JSON.stringify(editor.children)
-   await axios.post(`/api/docs/update/${paramId}`,{data: data}).then((result)=>{
-    }).catch((err)=>{})}
+   await axios.post(`/api/docs/update/${paramId}`,{data: data}).then((result)=>{}).catch((err)=>{})}
 
 
   const changeHandler = () =>{
@@ -89,6 +103,20 @@ export default function TextEditor({ value, paramId}){
          />
       </div>
       </Slate> 
+      { mousePositionUser.username &&
+
+        <div className={styles.userIconConatiner} 
+  style={{
+    position:'absolute', 
+    top: `${mousePositionUser.mousePosition.y}px`, 
+    left:`${mousePositionUser.mousePosition.x}px`
+  }}
+>
+  <LiaMousePointerSolid className={styles.userIcon} />
+  <span>{mousePositionUser.username}</span>
+</div>
+
+      }
     </div>
   )
 }

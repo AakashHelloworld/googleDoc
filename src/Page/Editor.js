@@ -33,7 +33,7 @@ export default function Editor() {
     <div>
     { docData.Data ?
       <>
-        <Navbar Title={docData.Title}/> 
+        <Navbar paramId={id} Title={docData.Title}/> 
         <TextEditor value={docData} paramId={id}/>
       </> :
       <h1>
