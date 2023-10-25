@@ -1,13 +1,19 @@
 import React, {useState,useCallback, useEffect} from 'react'
-import { createEditor, Editor,  Transforms } from 'slate'
+import { createEditor, Editor } from 'slate'
 import { Slate, withReact, Editable } from 'slate-react'
-import Tools from '../Tools'
-import {MarkActive, Leaf, isMarkActive,toggleMark, Element, toggleBlock,isBlockActive,LIST_TYPES, TEXT_ALIGN_TYPES} from "./index"
-import styles from "../../../Styles/Editor.module.css"
+import Tools from './Tools'
+import { MarkActive } from '../../Utils/markActive'
+import { Leaf } from '../../SlateTools/leaf'
+import { toggleBlock, isBlockActive, isMarkActive, toggleMark } from '../../SlateTools/slateFunction'
+import { Element } from '../../SlateTools/element'
+import { LIST_TYPES, TEXT_ALIGN_TYPES } from '../../Utils/Types'
+import styles from "../../Styles/Editor.module.css"
 import axios from 'axios'
-import { useGlobalContext } from '../../../Context/context'
+import { useGlobalContext } from '../../Context/context'
 import { io } from "socket.io-client"
 import {LiaMousePointerSolid} from "react-icons/lia"
+
+
   let timer = null;
   let delay = 1000;
 

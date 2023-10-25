@@ -3,9 +3,8 @@ import style from "../../Styles/Doc.module.css"
 import {BiDotsVerticalRounded} from "react-icons/bi"
 import axios from 'axios'
 import {ImCross} from "react-icons/im"
-import Modal from '../Form_Modal/Modal'
 import { Link } from 'react-router-dom'
-
+import Modal from '../../FormAndModal/Modal'
 
 const Blank =({data,DeleteDoc,shared})=>{
   const [popupStatus, SetpopupStatus] = useState(false);

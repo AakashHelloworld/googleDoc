@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Navbar from "../Components/Editor/Navbar"
-import TextEditor from "../Components/Editor/TextEditor/TextEditor"
+import TextEditor from "../Components/Editor/TextEditor"
 import { useParams } from 'react-router-dom';
 import axios from "axios"
 

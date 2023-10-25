@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import style from "../../Styles/Navbar.module.css"
 import axios from "axios"
-import Modal from '../Form_Modal/Modal'
-
+import Modal from '../../FormAndModal/Modal'
+import { ImCross } from 'react-icons/im'
 export default function Navbar({Title,paramId}) {
   const [tilePop, setTitlepop] = useState(false)
   const [titleText, setTitleText] = useState(Title)
@@ -26,13 +26,6 @@ export default function Navbar({Title,paramId}) {
   }
   }
 
-  const popUpCloser = (e)=>{
-    console.log("Close", e)
-      if(e.target.value == "TitlepopUpContainer"){
-        setTitlepop(false)
-      }
-  }
-
 
   return (
     <div className={style.Navbar}>
@@ -52,8 +45,9 @@ export default function Navbar({Title,paramId}) {
         </div>
       </div>
     <Modal isOpen={tilePop}>
-        <div value={"TitlepopUpContainer"} className={style.TitlepopUpMainContainer} onClick={popUpCloser}>
+        <div  className={style.TitlepopUpMainContainer}>
         <div className={style.TitlepopUpContainer}>
+              <ImCross onClick={()=>setTitlepop(false)} style={{marginBottom: '5px', alignContent: 'flex-end', cursor: 'pointer'}}/>
               <input value={titleText} onChange={(e) => setTitleText(e.target.value)} type='text' />
 
               <button onClick={tileupdatehandler}>Submit</button>

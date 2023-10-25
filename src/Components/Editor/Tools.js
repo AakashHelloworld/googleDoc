@@ -1,22 +1,17 @@
 import React, { useState } from 'react'
-import {Editor} from 'slate'
 import {useSlate } from 'slate-react'
-import Button from '../Form_Modal/Button';
+import Button from '../../FormAndModal/Button';
 import {AiOutlineBold,AiOutlineItalic,AiOutlineUnderline} from "react-icons/ai"
-import {insertImage, isImageUrl} from "./TextEditor/index"
 import {BsTextCenter,BsTextRight, BsTextLeft,BsImage } from "react-icons/bs"
 import {VscListOrdered, VscListUnordered} from "react-icons/vsc"
 import {LuHeading1, LuHeading2} from "react-icons/lu"
-
+import { insertImage, isImageUrl } from '../../SlateTools/Image';
 import style from "../../Styles/Editor.module.css"
 import {AiOutlinePlus, AiOutlineEnter} from "react-icons/ai"
-
 import {CiTextAlignJustify} from "react-icons/ci"
-
 import ColorPicker from './ColorPicker';
-
 import HighLightPicker from './HighLightPicker';
-import Modal from "../Form_Modal/Modal"
+import Modal from "../../FormAndModal/Modal" 
 import axios from "axios"
 
 

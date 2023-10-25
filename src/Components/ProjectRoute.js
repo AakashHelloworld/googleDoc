@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import axios from "axios"
-import { useGlobalContext } from '../../Context/context'
+import { useGlobalContext } from '../Context/context'
 
 let UserInformation={};
 const ProjectRoute = () => {
