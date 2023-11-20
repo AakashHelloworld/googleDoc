@@ -241,3 +241,32 @@ justify-content: end;
 padding-top: .5rem;
 padding-right: .5rem;
     }
+.tileContainer{
+    display: flex;
+}
+
+.button{
+    cursor:pointer;
+    background-color:transparent;
+    border:none;
+    border:2px solid #dadce0;
+    padding:1rem 2rem;
+    border-radius:.5rem;
+     color:#1a73e8;
+    font-size:1.3rem
+
+}
+
+
+@media (max-width: 835px) {
+    .tileContainer{
+        display: none;
+    
+    }
+
+    .button{
+        font-size: 1rem!important;
+        padding: .5rem .8rem!important;
+        color: red;
+    }
+}

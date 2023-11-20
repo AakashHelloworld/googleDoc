@@ -18,7 +18,7 @@ export default function NavBar({Image}) {
       !Image && <span>Google Docs</span>
     }
     { !Image &&
-    <div style={{display:'flex',justifyContent:'center',alignItems:'center', gap:'1rem', marginLeft:'4rem'}}>
+    <div className={style.tileContainer} style={{justifyContent:'center',alignItems:'center', gap:'1rem', marginLeft:'4rem'}}>
   <span style={{fontSize:'1.3rem', color:'gray', cursor:"pointer"}}>Overview</span>
   <span style={{fontSize:'1.3rem', color:'gray', cursor:"pointer"}}>Features</span>
   <span style={{fontSize:'1.3rem', color:'gray', cursor:"pointer"}}>Services</span>
@@ -40,7 +40,7 @@ export default function NavBar({Image}) {
   </div>  
   { !Image &&
   <div style={{display:'flex',justifyContent:'center',alignItems:'center', gap:'1rem', marginRight:'1rem'}}>
-    <button onClick={google} style={{cursor:'pointer', backgroundColor:'transparent', border:'none', border:'2px solid #dadce0', padding:'1rem 2rem', borderRadius:'.5rem', color:'#1a73e8', fontSize:'1.3rem'}}>Go to Docs</button>
+    <button className={style.button} onClick={google} style={{cursor:'pointer', backgroundColor:'transparent', border:'none', border:'2px solid #dadce0', padding:'1rem 2rem', borderRadius:'.5rem', color:'#1a73e8', fontSize:'1.3rem'}}>Go to Docs</button>
 
   </div>  
   }

@@ -12,15 +12,15 @@ export default function Home(){
     <>
     <NavBar />
     <div className={style.homePage}>
-        <div style={{width:"40%", display:"flex", justifyContent:"center", flexDirection:"column", paddingLeft:"4rem"}}>
+        <div className={style.Home}  style={{display:"flex", justifyContent:"center", flexDirection:"column", paddingLeft:"4rem"}}>
 
         <h1 style={{fontSize:'4rem', lineHeight:'4rem', fontWeight:'400', marginBottom:'1rem'}}>Build your best ideas together, in Google Docs</h1>
         <p style={{fontSize:'1.3rem', lineHeight:'2rem', fontWeight:'400'}}>Create and collaborate on online documents in real-time and from any device.</p>
 
         <button onClick={google} style={{cursor:'pointer', backgroundColor:'transparent', border:'none', border:'2px solid #dadce0', padding:'1rem 2rem', borderRadius:'.5rem', color:'#1a73e8', fontSize:'1.3rem', width:'fit-content', marginTop:'2rem'}}>Go to Docs</button>
         </div>
-        <div style={{width:"60%", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
-            <img style={{width:"100%", height:"100%"}} src={image} />
+        <div className={style.Image} style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
+            <img style={{width:"100%", aspectRatio:"4/3"}} src={image} />
         </div>
     </div>
     </>
