@@ -9,14 +9,13 @@ const ColorPicker = () => {
     const [OnPicker, setOnpicker] = useState(false)
     const [selectColor, setSelectColor] = useState(colors[0])
     const colorPickerHandler =()=> setOnpicker(!OnPicker);
-    const colorSelectHandler = (e)=>{
-        console.log(e.target.id)
-        // selectColor && Transforms.select(editor,selectColor)
-        // Editor.addMark(editor,formate,e.target.id);
-        
-        setSelectColor(e.target.id)
-        setOnpicker(false)    
-    }
+    const colorSelectHandler = (e) => {
+        const color = e.target.id;
+        Editor.addMark(editor, formate, color);
+        setSelectColor(color);
+        setOnpicker(false);
+    };
+    
 
 
 

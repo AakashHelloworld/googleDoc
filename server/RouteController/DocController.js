@@ -125,3 +125,23 @@ exports.TitleEdit = async(req, res)=>{
         Doc: UpdateDoc 
     })
 }
+
+
+exports.UpdateTitle = async(req, res)=>{
+    const DocId =  req.params.DocId;
+    const UserId = req.params.UserId;
+    const { Title } = req.body;
+    console.log(Title, "Hello")
+    if(!Title){
+        res.status(400).json({ 
+            message: "failed"
+        })
+    }
+    await Doc.findByIdAndUpdate(DocId, {Title: Title},{ new: true })
+    const remainigDoc = await Doc.find({CreatedBy:UserId }).sort({ CreatedAt: -1 });
+    res.status(200).json({ 
+        message: "success",
+        Docs: remainigDoc 
+    })
+
+}

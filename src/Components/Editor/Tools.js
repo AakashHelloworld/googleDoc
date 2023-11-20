@@ -10,7 +10,6 @@ import style from "../../Styles/Editor.module.css"
 import {AiOutlinePlus, AiOutlineEnter} from "react-icons/ai"
 import {CiTextAlignJustify} from "react-icons/ci"
 import ColorPicker from './ColorPicker';
-import HighLightPicker from './HighLightPicker';
 import Modal from "../../FormAndModal/Modal" 
 import axios from "axios"
 
@@ -80,19 +79,19 @@ export default function Tools({changeHandler, editor, paramId, MarkActive,isMark
     <Button
      active={isMarkActive(buttonEditor, "bold" )}
      value={"bold"} clickHandler={clickHandler}>
-      <AiOutlineBold className={`${isMarkActive(buttonEditor, "bold" )?'active_icon':'inactive_icon'}`}/>
+      <AiOutlineBold size={20} className={`${isMarkActive(buttonEditor, "bold" )?'active_icon':'inactive_icon'}`}/>
     </Button>
 
     <Button
      active={isMarkActive(buttonEditor, "italic" )}
      value={"italic"} clickHandler={clickHandler}>
-      <AiOutlineItalic className={isMarkActive(buttonEditor, "italic" )?'active_icon':'inactive_icon'} />
+      <AiOutlineItalic size={20} className={isMarkActive(buttonEditor, "italic" )?'active_icon':'inactive_icon'} />
     </Button>
 
     <Button
      active={isMarkActive(buttonEditor, "underline" )}
      value={"underline"} clickHandler={clickHandler}>
-    <AiOutlineUnderline className={isMarkActive(buttonEditor, "underline" )?'active_icon':'inactive_icon'} />
+    <AiOutlineUnderline size={20}  className={isMarkActive(buttonEditor, "underline" )?'active_icon':'inactive_icon'} />
     </Button>
 
 
@@ -102,7 +101,7 @@ export default function Tools({changeHandler, editor, paramId, MarkActive,isMark
     value={"heading_one"}
     clickHandler={blockclickhandler}
     >
-    <LuHeading1 className={isMarkActive(buttonEditor, "italic" )?'active_icon':'inactive_icon'} />
+    <LuHeading1 size={20} className={isMarkActive(buttonEditor, "italic" )?'active_icon':'inactive_icon'} />
     </Button>
 
     <Button
@@ -111,7 +110,7 @@ export default function Tools({changeHandler, editor, paramId, MarkActive,isMark
     clickHandler={blockclickhandler}
 
     >
-    <LuHeading2 className={isMarkActive(buttonEditor, "italic" )?'active_icon':'inactive_icon'} />
+    <LuHeading2 size={20} className={isMarkActive(buttonEditor, "italic" )?'active_icon':'inactive_icon'} />
 
     </Button>
 
@@ -120,7 +119,7 @@ export default function Tools({changeHandler, editor, paramId, MarkActive,isMark
     value={"numbered_list"}
     clickHandler={blockclickhandler}
     >
-    <VscListOrdered className={isBlockActive(editor, 'center', TEXT_ALIGN_TYPES.includes('center') ? 'align' : 'type' )?'active_icon':'inactive_icon'} />
+    <VscListOrdered size={20} className={isBlockActive(editor, 'center', TEXT_ALIGN_TYPES.includes('center') ? 'align' : 'type' )?'active_icon':'inactive_icon'} />
     </Button>
 
     <Button
@@ -129,7 +128,7 @@ export default function Tools({changeHandler, editor, paramId, MarkActive,isMark
     value={"bulleted_list"}
     clickHandler={blockclickhandler}
     >
-      <VscListUnordered className={isBlockActive(editor, 'center', TEXT_ALIGN_TYPES.includes('center') ? 'align' : 'type' )?'active_icon':'inactive_icon'} />
+      <VscListUnordered size={20} className={isBlockActive(editor, 'center', TEXT_ALIGN_TYPES.includes('center') ? 'align' : 'type' )?'active_icon':'inactive_icon'} />
     </Button>
 
 
@@ -139,18 +138,18 @@ active={isBlockActive(editor, 'left', TEXT_ALIGN_TYPES.includes('bulleted_list')
 value={"left"}
 clickHandler={blockclickhandler}
 >
-  <BsTextLeft
+  <BsTextLeft size={20}
 
 className={isBlockActive(editor, 'left', TEXT_ALIGN_TYPES.includes('left') ? 'align' : 'type' )?'active_icon':'inactive_icon'}
   />
 </Button>
     <Button
-
+  
 active={isBlockActive(editor, 'center', TEXT_ALIGN_TYPES.includes('center') ? 'align' : 'type' )}
 value={"center"}
 clickHandler={blockclickhandler}
 >
-  <BsTextCenter
+  <BsTextCenter size={20}
 
 className={isBlockActive(editor, 'center', TEXT_ALIGN_TYPES.includes('center') ? 'align' : 'type' )?'active_icon':'inactive_icon'}
   />
@@ -161,7 +160,7 @@ active={isBlockActive(editor, 'right', TEXT_ALIGN_TYPES.includes('right') ? 'ali
 value={"right"}
 clickHandler={blockclickhandler}
 >
-  <BsTextRight
+  <BsTextRight  size={20}
 
   className={isBlockActive(editor, 'right', TEXT_ALIGN_TYPES.includes('right') ? 'align' : 'type' )?'active_icon':'inactive_icon'}
 
@@ -174,7 +173,7 @@ active={isBlockActive(editor, 'justify', TEXT_ALIGN_TYPES.includes('justify') ? 
 value={"justify"}
 clickHandler={blockclickhandler}
 >
-  <CiTextAlignJustify className={isBlockActive(editor, 'justify', TEXT_ALIGN_TYPES.includes('justify') ? 'align' : 'type' )?'active_icon':'inactive_icon'} />
+  <CiTextAlignJustify size={20} className={isBlockActive(editor, 'justify', TEXT_ALIGN_TYPES.includes('justify') ? 'align' : 'type' )?'active_icon':'inactive_icon'} />
 </Button>
 
 
@@ -186,9 +185,6 @@ clickHandler={blockclickhandler}
 <ColorPicker editor={editor} />
 </Button>
 
-<Button>
-  <HighLightPicker editor={editor}/>
-</Button>
 </div>
 <div className={style.InviteContainer}>
 <button onClick={invitePopUpHandler}>

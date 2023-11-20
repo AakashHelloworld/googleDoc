@@ -10,7 +10,7 @@ const Doc = require("./Route/DocRoute")
 const Auth = require("./Route/AuthRouter")
 const cookieSession = require('cookie-session')
 
-dotenv.config({path: './config.env'}); 
+dotenv.config({path: './config.env'});  
 
 const DB = process.env.DATABASE; 
 console.log(DB)
@@ -20,7 +20,7 @@ mongoose.connect(DB,{
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
 }).then((con)=>{ 
-    console.log("sucessful database")   
+    console.log("sucessful database")
 });
 app.use(express.json());
 

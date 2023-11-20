@@ -36,9 +36,11 @@ export default function Editor() {
         <Navbar paramId={id} Title={docData.Title}/> 
         <TextEditor value={docData} paramId={id}/>
       </> :
-      <h1>
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100vh'}}>
+      <h1 style={{fontWeight:300, fontSize:'1.4rem'}}>
         Loading...
       </h1>
+      </div>
     }
     </div>
   )

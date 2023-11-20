@@ -11,7 +11,7 @@ export default function DocCreate({userId}) {
     await axios.post(`/api/docs/${userId}`).then((result)=>{
       if(result?.data?.Doc?._id){
         const Id  = result.data.Doc._id
-        navigate(`/Doc/${Id}`);
+        navigate(`/doc/${Id}/false`);
       }
     }).catch((Err)=>{
       console.log(Err)

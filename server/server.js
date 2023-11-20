@@ -19,28 +19,28 @@ process.on("unhandledRejection",(err)=>{
 }) 
 
 
-const io = require("socket.io")(server, {
-    pingTimeout: 60000,
-    cors: {
-      origin: "http://localhost:3000",
-      methods: ["GET", "POST"],
-      credentials: true,
-    },
-  });
+// const io = require("socket.io")(server, {
+//     pingTimeout: 60000,
+//     cors: {
+//       origin: "http://localhost:3000",
+//       methods: ["GET", "POST"],
+//       credentials: true,
+//     },
+//   });
 
 
-  io.on("connection", (socket) => {
-  console.log("Connected to socket.io");
-    // console.log(socket.id)
-    socket.on("get-document", (paramId)=>{
-        // console.log( "DocId ::::::", paramId)
-        // socket.join(paramId)
-        socket.on("User", (user_position)=>{
-            // console.log("I am active")
-            // console.log(user_position);
-            socket.to(paramId).emit('send-user-position', user_position)
-            }) 
-    } 
-    )
+//   io.on("connection", (socket) => {
+//   console.log("Connected to socket.io");
+//     // console.log(socket.id)
+//     socket.on("get-document", (paramId)=>{
+//         // console.log( "DocId ::::::", paramId)
+//         // socket.join(paramId)
+//         socket.on("User", (user_position)=>{
+//             // console.log("I am active")
+//             // console.log(user_position);
+//             socket.to(paramId).emit('send-user-position', user_position)
+//             }) 
+//     } 
+//     )
 
-    });        
+//     });        

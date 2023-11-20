@@ -8,10 +8,11 @@ router.route("/:UserId").post(DocController.CreateDoc)
 
 router.route("/shared/:UserId").get(DocController.SharedDoc)
 
+router.route("/update/title/:DocId/:UserId").post(DocController.UpdateTitle)
 
 router.route("/All/:UserId").get(DocController.GetAllDoc)
 
-router.route("/delete/:DocId/:UserId").delete(DocController.DeleteDoc)
+router.route("/delete/:DocId/:UserId").delete(DocController.DeleteDoc) 
 
 router.route("/update/:DocId").post(DocController.EditDoc)
  

@@ -32,52 +32,49 @@ export default function TextEditor({ value, paramId}){
       y: 0
     }
   })
-  useEffect(() => {
-    const s = io("http://localhost:4000")
-    setSocket(s)
-    return () => {
-      s.disconnect()
-    }
-  }, [])
+
+  // useEffect(() => {
+  //   const s = io("http://localhost:4000")
+  //   setSocket(s)
+  //   return () => {
+  //     s.disconnect()
+  //   }
+  // }, [])
+
+
+  // useEffect(()=>{
+  //   if(socket == null || paramId==null){
+  //       return
+  //   }else{
+  //     console.log(socket, "Hello socket")
+  //     socket.emit("get-document", paramId)
+
+  //     window.addEventListener('mousemove', (e)=>{
+  //       // console.log(e.clientX, e.clientY, "hello")
+  //       const user ={
+  //         username: state.Username,
+  //         mousePosition: {
+  //           x: e.clientX,
+  //           y: e.clientY
+  //         }
+  //       }
+  //       socket.emit("User", user)
+  //     })
+  //   }
+
+  // }, [paramId, socket])
+
+    // useEffect(()=>{
+    //   if(socket==null) return
+
+    //   socket.on('send-user-position', (user_position)=>{
+    //     console.log(user_position)
+    //     SetmousePositionUser(user_position)
+    //   })
 
 
 
-  
-
-
-  useEffect(()=>{
-    if(socket == null || paramId==null){
-        return
-    }else{
-      console.log(socket, "Hello socket")
-      socket.emit("get-document", paramId)
-
-      window.addEventListener('mousemove', (e)=>{
-        // console.log(e.clientX, e.clientY, "hello")
-        const user ={
-          username: state.Username,
-          mousePosition: {
-            x: e.clientX,
-            y: e.clientY
-          }
-        }
-        socket.emit("User", user)
-      })
-    }
-
-  }, [paramId, socket])
-
-    useEffect(()=>{
-      if(socket==null) return
-
-      socket.on('send-user-position', (user_position)=>{
-        console.log(user_position)
-        SetmousePositionUser(user_position)
-      })
-
-
-
-    }, [socket])
+    // }, [socket])
 
   const saveData = async() =>{
     const data = JSON.stringify(editor.children)
@@ -87,7 +84,6 @@ export default function TextEditor({ value, paramId}){
   const changeHandler = () =>{
     clearTimeout(timer);
     timer = setTimeout(saveData, delay);
-    socket.emit("send-changes", editor)    
   }
 
 
